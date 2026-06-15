@@ -1,0 +1,11 @@
+/*
+ Theme Name:     The Wombat Post 2020
+ Theme URI:      http://meta4.com.au
+ Description:    Custom theme for The Wombat Post
+ Author:         meta4 creative
+ Author URI:     http://meta4.com.au
+ Template:       Extra
+ Version:        1.0.0
+*/
+/*@import url("/wp-content/themes/Extra/style.css");*/
+@import url("/wp-content/themes/thewombatpost2020/assets/css/extra-styles.css");

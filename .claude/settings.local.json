@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -o -E '<h1[^>]*entry-title[^>]*>.{0,120}' \"council-news/index.html\")",
+      "Bash(grep -o -E 'entry-title.{0,150}' \"council-news/index.html\")",
+      "Bash(grep -o -E '<title>[^<]*</title>' __TRACKED_VAR__/index.html)",
+      "Bash(curl -sL -o /dev/null -w \"final: %{http_code}  -> %{url_effective}\\\\n\" \"https://www.thewombatpost.com.au/wp-content/uploads/2026/05/a-volcano-in-my-backyard-ladies-a4-300dpi-1280x640.jpg\")",
+      "WebFetch(domain:oldwombat.com)"
+    ]
+  }
+}

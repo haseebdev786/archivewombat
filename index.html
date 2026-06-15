@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Wombat Post &#8211; Daylesford and Hepburn Springs News</title>
+  <meta name="description" content="Static archive of The Wombat Post - Daylesford and Hepburn Springs news.">
+  <meta name="robots" content="index, follow">
+  <link rel="shortcut icon" href="/wp-content/uploads/2024/12/newwombat-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/archive/home.css">
+</head>
+<body>
+  <header class="site-header" id="main-header">
+    <div class="site-header__inner">
+      <a class="site-logo" href="/" aria-label="The Wombat Post home">
+        <img src="/wp-content/uploads/2024/12/newwombat-logo.webp" alt="The Wombat Post" width="399" height="87">
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" aria-label="Primary navigation" id="site-nav">
+        <ul> 
+          <li><a class="is-active" href="/">Homepage</a></li>
+          <li><a href="/?category=News">News</a></li>
+          <li><a href="/?category=Living%20well">Living well</a></li>
+          <li><a href="/?category=Culture">Culture</a></li>
+          <li><a href="/?category=Features">Features</a></li>
+          <li><a href="/?category=Letters">Letters</a></li>
+          <li><a href="/?category=Deaths">Deaths</a></li>
+          <li><a href="/?category=Sport%20and%20recreation">Sport</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="search-bar" aria-label="Search archive">
+      <form class="archive-search" role="search" autocomplete="off" onsubmit="return false">
+        <label class="visually-hidden" for="q">Search posts</label>
+        <input type="search" id="q" name="q" placeholder="Search posts&hellip;" aria-label="Search posts">
+        <select id="category" aria-label="Filter by category">
+          <option value="">All categories</option>
+        </select>
+      </form>
+    </section>
+
+    <section class="front-page" aria-label="Latest stories">
+      <div class="front-page__main" id="categoryCards"></div>
+      <aside class="front-page__side" aria-label="This week">
+        <h2 class="side-title">This Week</h2>
+        <div id="thisWeek"></div>
+      </aside>
+    </section>
+
+    <section class="home-featured" id="homeFeatured" aria-label="Featured posts">
+      <h2 class="home-featured__title">Featured Posts</h2>
+      <div class="home-featured__grid" id="homeFeaturedGrid"></div>
+      <nav class="home-featured__pagination" id="homeFeaturedPagination" aria-label="Featured posts pages"></nav>
+    </section>
+
+    <section class="archive" aria-label="Archive">
+      <section class="archive-grid" id="grid"></section>
+
+      <div class="archive-more">
+        <button type="button" id="loadMore" hidden>Load More</button>
+      </div>
+
+      <p class="archive-empty" id="empty" hidden>No posts match your search.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__ack">The Wombat Post acknowledges the Dja Dja Wurrung people as the Traditional Owners of the land on which we live and work.</p>
+      <p class="site-footer__meta">
+        <span>The Wombat Post &#8212; static archive.</span>
+        <span id="total"></span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="/archive/home.js" defer></script>
+</body>
+</html>
