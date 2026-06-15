@@ -14,8 +14,28 @@
 
   if (siteHeader) {
     var scrollTicking = false;
+    var lastHeaderProgress = -1;
+    var lastHeaderSmall = null;
+    var smallHeaderQuery = window.matchMedia ? window.matchMedia("(max-width: 520px)") : null;
+    var setHeaderMetric = function (name, value) {
+      siteHeader.style.setProperty(name, value.toFixed(2) + "px");
+    };
     var updateHeaderState = function () {
-      siteHeader.classList.toggle("is-scrolled", window.scrollY > 24);
+      var progress = Math.max(0, Math.min(window.scrollY / 80, 1));
+      var roundedProgress = Math.round(progress * 1000) / 1000;
+      var smallHeader = smallHeaderQuery ? smallHeaderQuery.matches : window.innerWidth <= 520;
+      if (roundedProgress !== lastHeaderProgress || smallHeader !== lastHeaderSmall) {
+        siteHeader.style.setProperty("--header-progress", roundedProgress);
+        setHeaderMetric("--header-pad-top", smallHeader ? 18 - (8 * roundedProgress) : 22 - (11 * roundedProgress));
+        setHeaderMetric("--header-logo-height", smallHeader ? 50 - (18 * roundedProgress) : 64 - (32 * roundedProgress));
+        setHeaderMetric("--header-toggle-top", smallHeader ? 18 - (10 * roundedProgress) : 22 - (14 * roundedProgress));
+        setHeaderMetric("--header-nav-margin", 14 - (6 * roundedProgress));
+        setHeaderMetric("--header-link-height", 56 - (14 * roundedProgress));
+        setHeaderMetric("--header-pad-bottom", 18 - (8 * roundedProgress));
+        siteHeader.classList.toggle("is-scrolled", roundedProgress > 0.01);
+        lastHeaderProgress = roundedProgress;
+        lastHeaderSmall = smallHeader;
+      }
       scrollTicking = false;
     };
 
@@ -25,6 +45,7 @@
       scrollTicking = true;
       window.requestAnimationFrame(updateHeaderState);
     }, { passive: true });
+    window.addEventListener("resize", updateHeaderState);
   }
 
   var PAGE_SIZE = 24;
