@@ -32,7 +32,7 @@ When a post on the main site turns 6 months old and you want it here:
    ```
    /my-new-post-slug/index.html
    ```
-2. Make sure any images it uses live under `/wp-content/uploads/...`
+2. Make sure any images it uses live under `https://staging.oldwombat.com/wp-content/uploads/...`
    (see **Images** below).
 3. Rebuild the index:
    ```
@@ -47,7 +47,7 @@ When a post on the main site turns 6 months old and you want it here:
 ## Images
 
 Post images are referenced with root-relative paths like
-`/wp-content/uploads/2022/04/photo.jpg`, so they are served from THIS archive
+`https://staging.oldwombat.com/wp-content/uploads/2022/04/photo.jpg`, so they are served from THIS archive
 site's own `wp-content/uploads/` folder (e.g. `oldwombat.com/wp-content/...`).
 Because the paths are root-relative, the archive works on any domain without
 changes.

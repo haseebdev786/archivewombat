@@ -120,6 +120,63 @@
     return out;
   }
 
+  function startOfWeek(d) {
+    var out = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+    var day = out.getDay();
+    var diff = day === 0 ? -6 : 1 - day;
+    out.setDate(out.getDate() + diff);
+    out.setHours(0, 0, 0, 0);
+    return out.getTime();
+  }
+
+  function endOfWeek(d) {
+    var out = new Date(startOfWeek(d));
+    out.setDate(out.getDate() + 7);
+    return out.getTime();
+  }
+
+  function sourcePostsForThisWeek() {
+    if (allPosts.length) return allPosts;
+    if (frontData && frontData.thisWeek && frontData.thisWeek.length) return frontData.thisWeek;
+    if (frontData && frontData.sections) {
+      var seen = {};
+      var posts = [];
+      Object.keys(frontData.sections).forEach(function (category) {
+        (frontData.sections[category] || []).forEach(function (post) {
+          var key = post.url || post.title;
+          if (!seen[key]) {
+            seen[key] = true;
+            posts.push(post);
+          }
+        });
+      });
+      return posts;
+    }
+    return [];
+  }
+
+  function thisWeekPosts(limit) {
+    var posts = sourcePostsForThisWeek()
+      .filter(function (post) { return post && post.timestamp; })
+      .sort(function (a, b) { return (b.timestamp || 0) - (a.timestamp || 0); });
+    if (!posts.length) return [];
+
+    var now = new Date();
+    var weekStart = startOfWeek(now);
+    var weekEnd = endOfWeek(now);
+    var currentWeek = posts.filter(function (post) {
+      return post.timestamp >= weekStart && post.timestamp < weekEnd;
+    });
+
+    if (currentWeek.length) return currentWeek.slice(0, limit);
+
+    var latest = posts[0].timestamp;
+    var latestWindowStart = latest - (7 * 24 * 60 * 60 * 1000);
+    return posts.filter(function (post) {
+      return post.timestamp >= latestWindowStart && post.timestamp <= latest;
+    }).slice(0, limit);
+  }
+
   function mediaHTML(p, className) {
     if (!p || !p.image) {
       return '<span class="' + className + ' ' + className + '--empty" aria-hidden="true">W</span>';
@@ -252,7 +309,7 @@
 
   function renderFrontPage() {
     els.categoryCards.innerHTML = FEATURED_SECTIONS.map(featuredHTML).join("");
-    var weekPosts = frontData && frontData.thisWeek ? frontData.thisWeek : allPosts.slice(0, 10);
+    var weekPosts = thisWeekPosts(10);
     els.thisWeek.innerHTML = weekPosts.map(function (p) {
       return (
         '<a class="week-link" href="' + esc(p.url) + '">' +
@@ -465,6 +522,9 @@
       updateArchiveHeading();
       els.grid.innerHTML = "";
       els.loadMore.hidden = true;
+      loadFullIndex()
+        .then(function () { renderFrontPage(); })
+        .catch(function (err) { console.error("Failed to refresh this week posts", INDEX_URL, err); });
     }
 
     els.q.addEventListener("input", debounce(applyFilterWithFullIndex, 150));

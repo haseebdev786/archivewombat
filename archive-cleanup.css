@@ -387,9 +387,182 @@ body.wp-theme-Extra.wp-child-theme-thewombatpost2020.et_extra::before {
 
 .post-nav,
 .related-posts {
-    max-width: 860px !important;
+    width: calc(100% - 48px) !important;
+    max-width: 1138px !important;
     margin-left: auto !important;
     margin-right: auto !important;
+}
+
+.single-post .static-post-nav {
+    margin-top: 34px !important;
+    margin-bottom: 28px !important;
+}
+
+.static-post-nav__links {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    gap: 28px !important;
+}
+
+.static-post-nav__item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    min-width: 0 !important;
+    color: var(--static-blue) !important;
+    font-family: var(--static-serif) !important;
+    text-decoration: none !important;
+}
+
+.static-post-nav__item--next {
+    align-items: flex-end !important;
+    text-align: right !important;
+}
+
+.static-post-nav__item--empty {
+    pointer-events: none !important;
+}
+
+.static-post-nav__button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 38px !important;
+    width: auto !important;
+    max-width: max-content !important;
+    padding: 0 14px !important;
+    border-radius: 4px !important;
+    background: #d8dee4 !important;
+    color: #3c4750 !important;
+    font-family: var(--static-serif) !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    text-transform: uppercase !important;
+    transition: background 0.15s ease, color 0.15s ease !important;
+}
+
+.static-post-nav__item:hover .static-post-nav__button {
+    background: var(--static-blue) !important;
+    color: #ffffff !important;
+}
+
+.static-post-nav__item .static-post-nav__title {
+    display: block !important;
+    color: var(--static-blue) !important;
+    font-family: var(--static-serif) !important;
+    font-size: 17px !important;
+    font-weight: 400 !important;
+    line-height: 1.28 !important;
+    max-width: 520px !important;
+}
+
+.static-post-nav__item:hover .static-post-nav__title {
+    text-decoration: underline !important;
+}
+
+.single-post .static-related {
+    overflow: hidden !important;
+    margin-top: 0 !important;
+    margin-bottom: 42px !important;
+    border: 1px solid var(--static-line) !important;
+    border-radius: 4px !important;
+    background: #ffffff !important;
+    box-shadow: 0 1px 2px rgba(29, 45, 59, 0.08) !important;
+}
+
+.static-related__header {
+    padding: 13px 22px !important;
+    border-bottom: 1px solid var(--static-line) !important;
+}
+
+.related-posts.static-related .static-related__header h3,
+.related-posts.static-related .related-posts-header h3 {
+    margin: 0 !important;
+    color: #262626 !important;
+    font-family: var(--static-serif) !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    text-transform: uppercase !important;
+}
+
+.static-related__grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 22px !important;
+    padding: 24px 22px 22px !important;
+}
+
+.static-related__post {
+    min-width: 0 !important;
+}
+
+.static-related__media-link,
+.static-related__image {
+    display: block !important;
+}
+
+.static-related__image {
+    overflow: hidden !important;
+    width: 100% !important;
+    aspect-ratio: 16 / 9.6 !important;
+    margin-bottom: 14px !important;
+    background: #eef2f5 !important;
+}
+
+.static-related__image img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.25s ease !important;
+}
+
+.static-related__post:hover .static-related__image img {
+    transform: scale(1.04) !important;
+}
+
+.static-related__image--empty {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #b9c2ca !important;
+    font-family: var(--static-serif) !important;
+    font-size: 34px !important;
+    font-weight: 700 !important;
+}
+
+.related-posts.static-related .static-related__title {
+    margin: 0 0 8px !important;
+    color: #202020 !important;
+    font-family: var(--static-serif) !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    line-height: 1.13 !important;
+}
+
+.related-posts.static-related .static-related__title a {
+    color: inherit !important;
+    font-family: var(--static-serif) !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    line-height: 1.13 !important;
+    text-decoration: none !important;
+}
+
+.related-posts.static-related .static-related__title a:hover {
+    color: var(--static-blue) !important;
+}
+
+.related-posts.static-related .static-related__date {
+    margin: 0 !important;
+    color: #000000 !important;
+    font-family: var(--static-serif) !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
 }
 
 #footer {
@@ -409,6 +582,113 @@ body.wp-theme-Extra.wp-child-theme-thewombatpost2020.et_extra::before {
     color: #8f8f8f !important;
     font-family: Arial, Helvetica, sans-serif !important;
     font-size: 12px !important;
+}
+
+.static-site-footer {
+    margin-top: 42px !important;
+    background: #111315 !important;
+    color: #9aa4ad !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03) !important;
+}
+
+.static-site-footer__inner {
+    max-width: 1280px !important;
+    margin: 0 auto !important;
+    padding: 32px 24px 24px !important;
+    box-sizing: border-box !important;
+}
+
+.static-site-footer__top {
+    display: grid !important;
+    grid-template-columns: minmax(210px, 0.7fr) minmax(0, 1.6fr) !important;
+    align-items: start !important;
+    gap: 36px !important;
+}
+
+.static-site-footer__brand {
+    margin: 0 !important;
+}
+
+.static-site-footer__brand-name {
+    margin: 0 !important;
+    color: #d6dde3 !important;
+    font-family: var(--static-serif) !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    line-height: 1.15 !important;
+}
+
+.static-site-footer__brand-name a {
+    color: inherit !important;
+    text-decoration: none !important;
+    transition: color 0.15s ease !important;
+}
+
+.static-site-footer__brand-name a:hover {
+    color: #5dbed8 !important;
+}
+
+.static-site-footer__tagline {
+    max-width: 320px !important;
+    margin: 7px 0 0 !important;
+    color: #7f8992 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+}
+
+.static-site-footer__nav {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(150px, 1fr)) !important;
+    gap: 12px 28px !important;
+    justify-items: start !important;
+}
+
+.static-site-footer__nav a {
+    color: #c4cbd1 !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.2px !important;
+    line-height: 1.35 !important;
+    text-decoration: none !important;
+    transition: color 0.15s ease, transform 0.15s ease !important;
+}
+
+.static-site-footer__nav a:hover {
+    color: #5dbed8 !important;
+}
+
+.static-site-footer__nav a:hover {
+    transform: translateY(-1px) !important;
+}
+
+.static-site-footer__bottom {
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 24px !important;
+    margin-top: 28px !important;
+    padding-top: 18px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.static-site-footer__ack {
+    max-width: 680px !important;
+    margin: 0 !important;
+    color: #87919a !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+}
+
+.static-site-footer__meta {
+    margin: 0 !important;
+    color: #6f767d !important;
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+    text-align: right !important;
 }
 
 @media (max-width: 860px) {
@@ -585,6 +865,31 @@ body.wp-theme-Extra.wp-child-theme-thewombatpost2020.et_extra::before {
         font-size: 17px !important;
         line-height: 1.58 !important;
     }
+
+    .static-post-nav__links {
+        gap: 18px !important;
+    }
+
+    .static-related__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .static-site-footer__top,
+    .static-site-footer__bottom {
+        display: flex !important;
+        align-items: flex-start !important;
+        flex-direction: column !important;
+    }
+
+    .static-site-footer__nav {
+        grid-template-columns: repeat(2, minmax(190px, 1fr)) !important;
+        width: 100% !important;
+        gap: 11px 24px !important;
+    }
+
+    .static-site-footer__meta {
+        text-align: left !important;
+    }
 }
 
 /* Keep exported post/page headers visually aligned with the archive homepage. */
@@ -664,5 +969,56 @@ body.wp-theme-Extra.wp-child-theme-thewombatpost2020.et_extra::before {
         font-weight: 700 !important;
         letter-spacing: 0 !important;
         text-decoration: none !important;
+    }
+}
+
+@media (max-width: 560px) {
+    .single-post .static-post-nav {
+        margin-top: 26px !important;
+    }
+
+    .static-post-nav__links {
+        grid-template-columns: 1fr !important;
+    }
+
+    .static-post-nav__item--next {
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+
+    .static-post-nav__title {
+        font-size: 16px !important;
+    }
+
+    .static-related__header {
+        padding: 13px 16px !important;
+    }
+
+    .static-related__grid {
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+        padding: 20px 16px 22px !important;
+    }
+
+    .static-related__title {
+        font-size: 18px !important;
+    }
+
+    .static-site-footer {
+        margin-top: 30px !important;
+    }
+
+    .static-site-footer__inner {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+    }
+
+    .static-site-footer__top {
+        gap: 22px !important;
+    }
+
+    .static-site-footer__nav {
+        grid-template-columns: 1fr !important;
+        gap: 11px !important;
     }
 }
